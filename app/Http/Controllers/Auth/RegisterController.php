@@ -22,7 +22,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers; //trait como fosse um (include)
 
     /**
      * Where to redirect users after registration.
@@ -52,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'], //sempre que utilizar o validador "confirmed" o campo name=password principal e a confirmarcão tem que utilize o name=password_confirmation
         ]);
     }
 
